@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>{{ pet_name }}</title>
+    <div class="container">
+        <div class="row bg-light rounded p-4">
+            <div class="col-lg-7 d-flex align-items-center">
+                <div>
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis">{{ pet_name }}</h1>
+                    <p class="lead">{{ pet_description }}</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                        <a href="{{ url_for ('contact') }}"><button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Хочу встретиться!</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <img class="rounded-lg-3" src="{{ url_for('static', filename='images/pets/' + pet_image) }}"
+                     alt="{{ pet_name }}" width="100%">
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>Добро пожаловать!</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" class=""
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active"
+                aria-current="true"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item carousel-item-start"
+             style="background-image: url('https://sun9-14.userapi.com/impg/5MZTcehjl3L468Z21hOeaJtxUCzOIxXd8vsmbg/8437Lh6Xdvg.jpg?size=1920x1531&quality=96&sign=dfebec60e37cf800b6240c17a49117dc&type=album');">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><strong>Свяжитесь с нами!</strong></h1>
+                    <h5><strong>Понравились котик или собачка, либо же возник другой вопрос? Напишите нам на почту и мы
+                        ответим вам в
+                        скором времени!</strong></h5>
+                    <p><a class="btn btn-lg btn-primary" href="{{ url_for('contact') }}">Связаться с нами</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item active"
+             style="background-image: url('https://sun9-26.userapi.com/impg/UsehBlUtpm8IekW9-YIonAuGHnqRhQXl-d61cQ/-M7OPXrRpEs.jpg?size=1920x1440&quality=96&sign=8c0cc790355da85493a27d0914d1688b&type=album');">
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><strong>Добро пожаловать</strong></h1>
+                    <h5><strong>Мы даем брошенным животным второй шанс на жизнь. Подарите им шанс быть
+                        любимыми!</strong></h5>
+                    <p><a class="btn btn-lg btn-primary" href="{{ url_for('articles') }}">Посмотреть питомцев</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>
+{% endblock %}

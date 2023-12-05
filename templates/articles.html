@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<title>Галерея</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+<div class="py-5 bg-body-tertiary">
+    <div class="container">
+        <fieldset class="filter-form">
+            <legend>Фильтр по типу питомца</legend>
+            <form method="post" action="/articles" class="filter-form">
+                <select id="pet_type" name="pet_type">
+                    <option value="">Все питомцы</option>
+                    <option value="Кошечка">Кошечка</option>
+                    <option value="Собачка">Собачка</option>
+                </select>
+                <button type="submit" name="filter_pets">Применить фильтр</button>
+            </form>
+        </fieldset>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for pet in pets %}
+            <div class="col">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='images/pets/' + pet.image) }}" alt="{{ pet.name }}"
+                         class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text"><strong>{{ pet.name }}</strong></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <form action="/article/{{ pet.name }}" method="get">
+                                    <button type="submit" class="btn btn-sm btn-outline-secondary">Познакомиться
+                                        поближе
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

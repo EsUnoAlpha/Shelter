@@ -1,0 +1,48 @@
+<!-- templates/admin_panel.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<title>Админ-панель</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/prof.css') }}">
+<main class="container">
+    <section class="profile">
+        <h1>Админ-панель</h1>
+
+        <!-- Форма добавления питомца -->
+        <form method="post" action="/admin_panel">
+            <h2>Добавить питомца</h2>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="image">Ссылка на изображение:</label>
+            <input type="text" id="image" name="image" required>
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description" required></textarea>
+            <label for="age">Возраст:</label>
+            <input type="number" id="age" name="age" required>
+            <label>Тип питомца:</label>
+            <div>
+                <input type="radio" id="cat" name="pet_type" value="Кошечка" required>
+                <label for="cat">Кошечка</label>
+            </div>
+            <div>
+                <input type="radio" id="dog" name="pet_type" value="Собачка" required>
+                <label for="dog">Собачка</label>
+            </div>
+            <!-- Добавьте другие типы питомцев по мере необходимости -->
+
+            <button type="submit" name="add_pet">Добавить</button>
+        </form>
+
+
+        <!-- Ссылка на страницу со списком питомцев -->
+        <a href="{{ url_for('pets_list') }}">Список питомцев</a>
+
+        {% for message in get_flashed_messages() %}
+        <div class="flash-message">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </section>
+</main>
+</html>
+{% endblock %}

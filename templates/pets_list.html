@@ -1,0 +1,27 @@
+<!-- templates/pets_list.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<title>Список питомцев</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/prof.css') }}">
+<main class="container">
+    <section class="profile">
+        <h1>Список питомцев</h1>
+        {% for pet in pets %}
+        <div class="pet">
+            <h3>{{ pet.name }}</h3>
+            <p>{{ pet.description }}</p>
+            <p>Возраст: {{ pet.age }}</p>
+            <p>{{ pet.pet_type }}</p>
+
+
+            <form method="post" action="{{ url_for('admin_panel', action='delete_pet') }}">
+                <input type="hidden" name="pet_id" value="{{ pet.id }}">
+                <button type="submit" name="delete_pet">Удалить</button>
+            </form>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+</html>
+{% endblock %}
